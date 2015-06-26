@@ -14,11 +14,14 @@ jQuery(function ($) {
 		//percentPosition: true
 	});
 	
+	$grid.imagesLoaded().progress(function () {
+		$grid.masonry('layout');
+	});
+	
 	$('#bootstrap-posts-panels-widget').find('.infinite-scroll-container').bind('infinite-scroll-items-loaded', function (evt, $items) {
 		$grid.masonry('appended', $items);
 		
 		$grid.imagesLoaded().progress(function () {
-			console.log('loaded');
 			$grid.masonry('layout');
 		});
 	});
