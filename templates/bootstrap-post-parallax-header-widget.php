@@ -4,7 +4,7 @@
 	<div class="parallax-bg" style="background-image:url('<?php echo $image_info[0]; ?>');"></div>
 	<div class="container header-nav">
 		<div class="row">
-			<div class="col-xs-12 col-md-8 col-md-offset-1">
+			<div class="col-xs-12 col-md-8 col-md-offset-1 col-nav">
 				<h1 class="title"><?php the_title(); ?></h1>
 			</div>
 			<div class="col-xs-6 col-md-4 col-md-offset-1 col-nav">
