@@ -15,8 +15,11 @@ jQuery(function ($) {
 	});
 	
 	$('#bootstrap-posts-panels-widget').find('.infinite-scroll-container').bind('infinite-scroll-items-loaded', function (evt, $items) {
-		console.log('loaded');
 		$grid.masonry('appended', $items);
-		$grid.masonry('layout');
+		
+		$grid.imagesLoaded().progress(function () {
+			console.log('loaded');
+			$grid.masonry('layout');
+		});
 	});
 });

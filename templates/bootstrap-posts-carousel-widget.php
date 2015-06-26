@@ -11,7 +11,7 @@
 		<div class="carousel-inner" role="listbox">
 			<?php foreach ( $posts as $p => $post ): ?>
 				<div class="item <?php if ( $p < 1 ) echo 'active'; ?>">
-					<a class="image-link" href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_post_thumbnail( $post->ID, 'full' ); ?></a>
+					<a class="image-link" href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?></a>
 					<div class="carousel-caption" onclick="window.location = &quot;<?php echo esc_attr( get_permalink( $post->ID ) );?>&quot;">
 						<?php $featured_title = get_post_meta( $post->ID, 'Featured Title', true ); ?>
 						<?php if ( $featured_title ): ?>

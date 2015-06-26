@@ -52,8 +52,9 @@ function bootstrap_widgets_include_template( $template, $vars ) {
 
 function bootstrap_widgets_scripts() {
 	wp_enqueue_style( 'bootstrap-widgets', plugin_dir_url( __FILE__ ) . 'css/style.css' );
-	wp_enqueue_script( 'masonry.desandro', plugin_dir_url( __FILE__ ) . 'js/masonry.min.js', array( 'jquery' ) );
-	wp_enqueue_script( 'bootstrap-widgets', plugin_dir_url( __FILE__ ) . 'js/scripts.js', array( 'jquery', 'masonry.desandro' ) );
+	wp_enqueue_script( 'desandro.imagesloaded', plugin_dir_url( __FILE__ ) . 'js/imagesloaded.min.js', array( 'jquery' ) );
+	wp_enqueue_script( 'desandro.masonry', plugin_dir_url( __FILE__ ) . 'js/masonry.min.js', array( 'jquery' ) );
+	wp_enqueue_script( 'bootstrap-widgets', plugin_dir_url( __FILE__ ) . 'js/scripts.js', array( 'jquery', 'desandro.imagesloaded', 'desandro.masonry' ) );
 }
 add_action( 'wp_enqueue_scripts', 'bootstrap_widgets_scripts' );
 
