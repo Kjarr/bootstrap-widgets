@@ -14,9 +14,9 @@ jQuery(function ($) {
 		//percentPosition: true
 	});
 	
-	$('#bootstrap-posts-panels-widget').find('.infinite-scroll-container').bind('scroll-set-loaded', function () {
+	$('#bootstrap-posts-panels-widget').find('.infinite-scroll-container').bind('infinite-scroll-items-loaded', function (evt, $items) {
 		console.log('loaded');
-		$grid.masonry('destroy');
-		$grid.masonry();
+		$grid.masonry('appended', $items);
+		$grid.masonry('layout');
 	});
 });
