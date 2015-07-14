@@ -1,7 +1,7 @@
 <div id="bootstrap-posts-panels-widget" class="bootstrap-posts-panels-widget bootstrap-widget">
 	<div class="row infinite-scroll-container grid">
 		<?php foreach ( $posts as $p => $post ): ?>
-			<article class="col-sm-12 col-md-6 grid-item">
+			<article class="col-xs-12 col-sm-12 col-md-6 grid-item">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?></a>
