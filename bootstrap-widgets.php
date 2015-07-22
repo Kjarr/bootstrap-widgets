@@ -62,10 +62,16 @@ function bootstrap_widgets_get_post_excerpt( $post_id, $charlength ) {
 	global $post;
 	$temp_post = $post;
 	$post = get_post( $post_id );
-	$excerpt = get_the_excerpt();
-	$charlength++;
+	$excerpt = strip_tags( get_the_excerpt() );
+	$excerpt_length = mb_strlen( $excerpt );
+	$charlength = 250;
+	
+	if ( $excerpt_length < 1 ) {
+		$excerpt = strip_tags( $post->post_content );
+	}
+	$excerpt_length = mb_strlen( $excerpt );
 
-	if ( mb_strlen( $excerpt ) > $charlength ) {
+	if ( $excerpt_length > $charlength ) {
 		$subex = mb_substr( $excerpt, 0, $charlength - 5 );
 		$exwords = explode( ' ', $subex );
 		$excut = - ( mb_strlen( $exwords[ count( $exwords ) - 1 ] ) );
