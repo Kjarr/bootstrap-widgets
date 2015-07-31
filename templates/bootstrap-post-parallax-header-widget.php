@@ -10,7 +10,7 @@
 			<div class="col-xs-6 col-md-4 col-md-offset-1 col-nav">
 				<a href="#" class="toggle-post toggle-post-content">
 					<?php echo get_avatar( $post->post_author, 'thumb' ); ?> 
-					<span class="hidden-xs">Posted On </span>April 18, 2015
+					<span class="hidden-xs">Posted On </span><?php echo date_i18n( get_option('date_format'), strtotime( $post->post_date ) ); ?>
 				</a>
 			</div>
 			<div class="col-xs-6 col-md-4 col-nav">
