@@ -11,7 +11,14 @@
 		<div class="carousel-inner" role="listbox">
 			<?php foreach ( $posts as $p => $post ): ?>
 				<div class="item <?php if ( $p < 1 ) echo 'active'; ?>">
-					<a class="image-link" href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?></a>
+					<a class="image-link" href="<?php echo get_permalink( $post->ID ); ?>">
+						<?php $carousel_image_id = get_post_meta( $post->ID, 'carousel_image', true ); ?>
+						<?php if ( ! empty( $carousel_image_id ) ): ?>
+							<?php echo wp_get_attachment_image( $carousel_image_id, 'large' ); ?>
+						<?php else: ?>
+							<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
+						<?php endif; ?>
+					</a>
 					<div class="carousel-caption" onclick="window.location = &quot;<?php echo esc_attr( get_permalink( $post->ID ) );?>&quot;">
 						<?php $featured_title = get_post_meta( $post->ID, 'Featured Title', true ); ?>
 						<?php if ( $featured_title ): ?>

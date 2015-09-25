@@ -4,7 +4,14 @@
 			<article class="col-xs-12 col-sm-12 col-md-6 grid-item">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?></a>
+						<a class="image-link" href="<?php echo get_permalink( $post->ID ); ?>">
+							<?php $panel_image_id = get_post_meta( $post->ID, 'panel_image', true ); ?>
+							<?php if ( ! empty( $panel_image_id ) ): ?>
+								<?php echo wp_get_attachment_image( $panel_image_id, 'large' ); ?>
+							<?php else: ?>
+								<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
+							<?php endif; ?>
+						</a>
 						<div class="panel-caption">
 							<?php $featured_title = get_post_meta( $post->ID, 'Featured Title', true ); ?>
 							<?php if ( $featured_title ): ?>

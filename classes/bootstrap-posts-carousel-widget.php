@@ -27,9 +27,22 @@ class Bootstrap_Posts_Carousel_Widget extends WP_Widget {
 			'post_status' => 'publish',
 			'posts_per_page' => 5,
 			'order'=> 'DESC',
-			'orderby' => 'date'
+			'orderby' => 'date',
+			'meta_query' => array(
+				'relation' => 'OR',
+				array(
+					'key' => 'hide_from_carousel',
+					'compare' => 'NOT EXISTS'
+				),
+				array(
+					'key' => 'hide_from_carousel',
+					'value' => 'no'
+				)
+			)
 		);
 		$posts_result = get_posts( $posts_query_args );
+		// Reverse results
+		$posts_result = array_reverse( $posts_result );
 		// Include template
 		bootstrap_widgets_include_template( 'bootstrap-posts-carousel-widget', array( 
 			'posts' => $posts_result 
